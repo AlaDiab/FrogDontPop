@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float movementSpeed;
     public float jumpForce;
     private bool onGround;
+    public bool canMoveInAir;
+    public float jumpOffset;
 
     // Ground check variables
     public LayerMask groundLayer; // Layer to identify the ground
@@ -32,6 +34,15 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
             // Movement in midair
+            if (!canMoveInAir)
+            {
+                float horizontalInput = ControlsManager.Stick(0).x;
+                rb.linearVelocity = new Vector2(horizontalInput * movementSpeed, rb.linearVelocity.y);
+            }
+        }
+
+        if (canMoveInAir)
+        {
             float horizontalInput = ControlsManager.Stick(0).x;
             rb.linearVelocity = new Vector2(horizontalInput * movementSpeed, rb.linearVelocity.y);
         }
