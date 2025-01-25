@@ -27,13 +27,13 @@ public class Player : MonoBehaviour
         onGround = IsGrounded();
 
         // Jump
-        if (onGround && ControlsManager.Stick(0).y > 0 && rb.velocity.y == 0)
+        if (onGround && ControlsManager.Stick(0).y > 0 && rb.linearVelocity.y == 0)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
             // Movement in midair
             float horizontalInput = ControlsManager.Stick(0).x;
-            rb.velocity = new Vector2(horizontalInput * movementSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(horizontalInput * movementSpeed, rb.linearVelocity.y);
         }
     }
 
