@@ -30,7 +30,7 @@ public class Bubble : MonoBehaviour
         cc.isTrigger = player.transform.position.y + player.jumpOffset < transform.position.y;
 
         // Bubbles sink when the player is on them
-        if (sinking)
+        if (sinking && player.onGround)
         {
             transform.position += (sinking) ? new Vector3(0, player.fliesEaten * -0.0001f, 0) : Vector3.zero;
             Color newColor = sr.color + new Color(0, 0, 0, player.fliesEaten * -0.0001f);

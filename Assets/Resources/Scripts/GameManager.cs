@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,13 @@ public class GameManager : MonoBehaviour
     public Transform backgroundParent;
     public int bubbleSpacing;
     public bool gameStarted;
+
+    // User interface
+    public GameObject startButton;
+    public GameObject title;
+    public TextMeshProUGUI heightDisplay;
+    public TextMeshProUGUI fliesEatenDisplay;
+    public GameObject gameOverScreen;
 
     void Start()
     {
@@ -43,5 +52,23 @@ public class GameManager : MonoBehaviour
             newSkyPiece.transform.parent = backgroundParent;
             lastSkyPiece = newSkyPiece.transform;
         }
+
+        // Update scores
+        heightDisplay.text = $"Height: {Mathf.Round(player.heighestHeight * 10f) / 10f} meters";
+        fliesEatenDisplay.text = $"Flies Eaten: {player.fliesEaten}";
+    }
+
+    public void StartGame()
+    {
+        title.SetActive(false);
+        startButton.SetActive(false);
+        gameStarted = true;
+    }
+
+    public void RestartGame()
+    {
+        // Reload the current active scene
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }

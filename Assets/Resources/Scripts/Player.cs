@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public int fliesEaten;
     public GameObject tongue;
     public float heighestHeight;
+    public Camera camera;
 
     // Ground check variables
     public LayerMask groundLayer; // Layer to identify the ground
@@ -91,6 +92,13 @@ public class Player : MonoBehaviour
         // Edit size of frog based on the flies eaten
         float newSize = 0.5f + (fliesEaten * 0.005f);
         transform.localScale = new Vector3(newSize, newSize, newSize);
+
+        // End the game if you fall too far down
+        if (transform.position.y <= camera.transform.position.y - 7)
+        {
+            gameManager.gameStarted = false;
+            gameManager.gameOverScreen.SetActive(true);
+        }
     }
     
     bool IsCollidingHorizontally(float horizontalInput)

@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FrogOpenMouth_204x204_0: -5210225033478668996
+      FrogOpenMouth_204x204_1: -5507194788784594737
+      FrogOpenMouth_204x204_2: -6100004826022851084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

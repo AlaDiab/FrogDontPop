@@ -14,7 +14,7 @@ public static class AudioManager
 
         // Select and load audio clip to play
         int selection = Random.Range(0, fileNames.Length);
-        AudioClip sound = Resources.Load<AudioClip>($"Sounds/SFX/{fileNames[selection]}");
+        AudioClip sound = Resources.Load<AudioClip>($"Audio/{fileNames[selection]}");
         if (sound == null)
         {
             Debug.LogError($"AudioClip '{fileNames[selection]}' not found in Resources/Audio.");
@@ -38,7 +38,7 @@ public static class AudioManager
 
         // Select and load audio clip to play
         int selection = Random.Range(0, fileNames.Length);
-        AudioClip sound = Resources.Load<AudioClip>($"Sounds/SFX/{fileNames[selection]}");
+        AudioClip sound = Resources.Load<AudioClip>($"Audio/{fileNames[selection]}");
         if (sound == null)
         {
             Debug.LogError($"AudioClip '{fileNames[selection]}' not found in Resources/Audio.");
