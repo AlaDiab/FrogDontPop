@@ -26,8 +26,16 @@ public class Bubble : MonoBehaviour
 
     void Update()
     {
-        // Allow the player to jump through the bubble to come up on top
-        cc.isTrigger = player.transform.position.y + player.jumpOffset < transform.position.y;
+        // Disable bubbles if the game is over
+        if (!gameManager.gameStarted)
+        {
+            cc.isTrigger = true;
+        }
+        else
+        {
+            // Allow the player to jump through the bubble to come up on top
+            cc.isTrigger = player.transform.position.y + player.jumpOffset < transform.position.y;
+        }
 
         // Bubbles sink when the player is on them
         if (sinking && player.onGround)

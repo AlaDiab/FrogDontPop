@@ -10,6 +10,8 @@ public class Fly : MonoBehaviour
     private Vector2 movementDirection;  // Current movement direction
     private float timer;                // Timer to track direction changes
     private Vector2 startPosition;      // Initial position for area constraint
+    public SpriteRenderer sr;
+    public Rigidbody2D rb;
 
     void Start()
     {
@@ -49,7 +51,10 @@ public class Fly : MonoBehaviour
     private Vector2 GetRandomDirection()
     {
         float angle = Random.Range(0f, 360f); // Random angle in degrees
-        return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized; // Convert to a unit vector
+        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)).normalized; // Convert to a unit vector
+
+        sr.flipX = direction.x > 0; // Flip sprite if direction is to the right
+        return direction;
     }
 
     // Optional: Visualize the movement area in the editor
