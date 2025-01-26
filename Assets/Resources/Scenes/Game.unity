@@ -392,6 +392,18 @@ MonoBehaviour:
   backgroundParent: {fileID: 1612429917}
   bubbleSpacing: 2
   gameStarted: 0
+  startButton: {fileID: 1313481451}
+  title: {fileID: 686385660}
+  heightDisplay: {fileID: 2077059504}
+  fliesEatenDisplay: {fileID: 2045883103}
+  gameOverScreen: {fileID: 1402176446}
+  sounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &404698225
 AudioSource:
   m_ObjectHideFlags: 0
@@ -669,11 +681,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 2
-  m_LightType: 3
+  m_LightType: 4
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.625
-  m_Color: {r: 1, g: 0.9806604, b: 0.8066038, a: 1}
-  m_Intensity: 1.31
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -696,8 +708,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 4.6
-  m_PointLightOuterRadius: 17.14
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -850,7 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83609605, g: 1, b: 0.63012815, a: 0}
+  m_Color: {r: 0.83609605, g: 1, b: 0.63012815, a: 0.6431373}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -934,8 +946,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Frog Don't Pop
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 947a44964e53bf0448ff698b2a2219c0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -959,13 +971,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 98.9
-  m_fontSizeBase: 98.9
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 32
+  m_fontStyle: 33
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1699,8 +1711,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1724,8 +1736,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.74
-  m_fontSizeBase: 48.74
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2216,8 +2228,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  camera: {fileID: 519420031}
+  tongue: {fileID: 2040128989}
   movementSpeed: 5
   jumpForce: 10
+  onGround: 0
   canMoveInAir: 1
   jumpOffset: -0.5
   sprites:
@@ -2225,7 +2240,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2bebbabff69992e72b177a72ea25f1bf, type: 3}
   - {fileID: -6100004826022851084, guid: fb77b7cb0b3a92f13b21bd5181a10bfa, type: 3}
   fliesEaten: 25
-  tongue: {fileID: 2040128989}
   heighestHeight: 0
   groundLayer:
     serializedVersion: 2
