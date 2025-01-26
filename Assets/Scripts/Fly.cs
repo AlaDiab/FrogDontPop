@@ -3,7 +3,7 @@ using UnityEngine;
 public class Fly : MonoBehaviour
 {
     // Movement settings
-    public float moveSpeed = 3f;         // Base speed of the fly
+    public float moveSpeed = 1f;         // Base speed of the fly
     public float changeDirectionTime = 0.5f; // Time before changing direction
     public Vector2 movementArea = new Vector2(5f, 5f); // Bounds of the movement area
 
@@ -12,16 +12,23 @@ public class Fly : MonoBehaviour
     private Vector2 startPosition;      // Initial position for area constraint
     public SpriteRenderer sr;
     public Rigidbody2D rb;
+    public Player player;
 
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
         // Save the starting position
         startPosition = transform.position;
 
         // Choose an initial random direction
         movementDirection = GetRandomDirection();
 
+        // Play sound
         AudioManager.Play(false, 3, 2);
+
+        // Make movement speed faster as the playe eats more flies
+        moveSpeed = 1 + (player.fliesEaten / 10);
     }
 
     void Update()

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 29c419034bb0b4ae78c4ea22f0010ceb
+guid: f63cdb4003d536b4ab12dbc78055942f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5433917240353214804
-    second: JumpingFrog_204x204_0
-  - first:
-      213: 3012178229302073038
-    second: JumpingFrog_204x204_1
-  - first:
-      213: 538922335614978134
-    second: JumpingFrog_204x204_2
+      213: 1852629436021196249
+    second: JumpingFrogOpenMouth02_204x204_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,67 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JumpingFrog_204x204_0
+      name: JumpingFrogOpenMouth02_204x204_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 3
-        width: 185
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 156
+        y: 4
+        width: 125
+        height: 378
+      alignment: 9
+      pivot: {x: 0.3619773, y: 0.8627318}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cae20ed5f09d694b0800000000000000
-      internalID: -5433917240353214804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JumpingFrog_204x204_1
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 195
-        width: 11
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec617bde3286dc920800000000000000
-      internalID: 3012178229302073038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JumpingFrog_204x204_2
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 193
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 658cad74203aa7700800000000000000
-      internalID: 538922335614978134
+      spriteID: 9d5c97a08acd5b910800000000000000
+      internalID: 1852629436021196249
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 260340960bf06b269b59bb004413a218
     internalID: 0
     vertices: []
     indices: 
@@ -197,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JumpingFrogOpenMouth02_204x204_0: 1852629436021196249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f0e5924017641fe23a7ab6db5417fef4
+guid: 83dd015b7c73f263abc4e8544a127773
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6485816208535982237
-    second: Tongue_204x204_0
+      213: 7199914487283151786
+    second: JumpingFrog02_204x204_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tongue_204x204_0
+      name: JumpingFrog02_204x204_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 43
-        width: 182
-        height: 120
+        x: 155
+        y: 3
+        width: 125
+        height: 378
       alignment: 9
-      pivot: {x: 0.96300274, y: 0.09218133}
+      pivot: {x: 0.3619773, y: 0.8627318}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9012447a7f320a50800000000000000
-      internalID: 6485816208535982237
+      spriteID: aa373b3541c3be360800000000000000
+      internalID: 7199914487283151786
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: af286c2bf2b47b53f853ae8f047e2d86
+    spriteID: d89a5b81e6f273d8e98fa47f702753e7
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tongue_204x204_0: 6485816208535982237
+      JumpingFrog02_204x204_0: 7199914487283151786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

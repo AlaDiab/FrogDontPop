@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
             return;
         }
 
+        // Edit jump height
+        jumpForce = 10 + (fliesEaten / 20);
+
         // Check if player is on the ground
         onGround = IsGrounded();
     
@@ -93,7 +96,6 @@ public class Player : MonoBehaviour
         // Handle mouse click raycast
         if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
-            //HandleMouseClickRaycast();
             StartCoroutine(ShootTongue());
         }
     
@@ -184,11 +186,15 @@ public class Player : MonoBehaviour
             Vector2 direction = (mousePosition - transform.position).normalized;
 
             // Perform a raycast to detect hits within the maximum distance
-            float maxDistance = 5f; // Maximum tongue reach
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance);
+            //float maxDistance = 5f; // Maximum tongue reach
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance);
 
             // Determine the actual distance to stretch the tongue
-            float distance = hit.collider != null ? hit.distance : maxDistance;
+            //float distance = hit.collider != null ? hit.distance : maxDistance;
+
+            // Draw the raycast
+            //Debug.DrawRay(transform.position, direction * distance, Color.red, 0.2f);
+            //Debug.DrawRay(transform.position, direction * distance, Color.green);
 
             // Point the tongue toward the target
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -204,11 +210,10 @@ public class Player : MonoBehaviour
             AudioManager.Play(false, 6, 2);
 
             // Wait for a short duration to simulate the tongue reaching out
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
 
             // Reset the tongue
             tongue.SetActive(false);
-            tongue.transform.localScale = new Vector3(1, tongue.transform.localScale.y, tongue.transform.localScale.z);
         }
     }
 }

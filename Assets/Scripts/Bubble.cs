@@ -10,6 +10,7 @@ public class Bubble : MonoBehaviour
     private float movementSpeed = 0;
     private GameManager gameManager;
     private SpriteRenderer sr;
+    public ParticleSystem popEffect;
     
     void Start()
     {
@@ -52,18 +53,21 @@ public class Bubble : MonoBehaviour
         // Delete when outside of the map
         if (transform.position.x > 10.5f || transform.position.x < -10.5f || sr.color.a <= 0)
         {
-            // Unparent the player
-            if (transform.childCount == 1)
-            {
-                transform.GetChild(0).parent = null;
-            }
-            
             gameManager.bubbles.Remove(this);
+
+            // Play sound if popped by the player
             if (sr.color.a <= 0)
             {
                 AudioManager.Play(false, 2, 2);
+
+                // Create pop effect
+                ParticleSystem newEffect = Instantiate(popEffect);
+                newEffect.transform.position = transform.position;
             }
-            
+
+            // Unparent the player
+            player.transform.parent = null;
+
             Destroy(gameObject);
         }
     }
