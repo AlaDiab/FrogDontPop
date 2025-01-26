@@ -28,22 +28,6 @@ public class GameManager : MonoBehaviour
     // Sound
     public AudioClip[] sounds;
 
-    public static GameManager Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject); // Prevent duplicate GameManager
-        }
-
-        DontDestroyOnLoad(gameObject); // Optional: Keep GameManager across scenes
-    }
-
     void Start()
     {
         AudioManager.Play(true, 0, 0);

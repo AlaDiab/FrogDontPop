@@ -68,10 +68,17 @@ public class Player : MonoBehaviour
         heighestHeight = (heighestHeight < transform.position.y) ? transform.position.y : heighestHeight;
     
         // Change sprites
-        sr.sprite = (onGround) ? sprites[0] : sprites[1];
-        if (!onGround)
+        if (!tongue.activeInHierarchy)
         {
-            sr.flipX = (ControlsManager.Stick(0).x == 0 && !onGround) ? sr.flipX : (ControlsManager.Stick(0).x > 0);
+            sr.sprite = (onGround) ? sprites[0] : sprites[1];
+            if (!onGround)
+            {
+                sr.flipX = (ControlsManager.Stick(0).x == 0 && !onGround) ? sr.flipX : (ControlsManager.Stick(0).x > 0);
+            }
+        }
+        else
+        {
+            sr.sprite = (onGround) ? sprites[2] : sprites[3];
         }
     
         if (canMoveInAir && !onGround)
@@ -86,7 +93,7 @@ public class Player : MonoBehaviour
         // Handle mouse click raycast
         if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
-            HandleMouseClickRaycast();
+            //HandleMouseClickRaycast();
             StartCoroutine(ShootTongue());
         }
     
@@ -95,7 +102,7 @@ public class Player : MonoBehaviour
         transform.localScale = new Vector3(newSize, newSize, newSize);
 
         // End the game if you fall too far down
-        if (transform.position.y <= camera.transform.position.y - 7)
+        if (transform.position.y <= camera.transform.position.y - 6)
         {
             gameManager.gameStarted = false;
             gameManager.gameOverScreen.SetActive(true);
@@ -129,10 +136,15 @@ public class Player : MonoBehaviour
         // Debug line to visualize the raycast in the Scene view
         Debug.DrawRay(raycastOrigin, Vector2.down * groundCheckDistance, Color.red);
 
+        if (hit.collider != null && !onGround)
+        {
+            AudioManager.Play(false, 5, 2);
+        }
+
         return hit.collider != null; // Returns true if the raycast hits something
     }
 
-    void HandleMouseClickRaycast()
+    /*void HandleMouseClickRaycast()
     {
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -148,6 +160,9 @@ public class Player : MonoBehaviour
         // Draw a debug line from the player to the mouse position
         Debug.DrawLine(transform.position, mousePosition, Color.green, 1f); // Line lasts for 2 seconds
 
+        // Play sound
+        AudioManager.Play(false, 6, 2);
+
         // Log what the ray hit (if anything)
         if (hit.collider != null)// && hit.collider.tag != "Player")
         {
@@ -155,39 +170,45 @@ public class Player : MonoBehaviour
             //fliesEaten++;
             //Destroy(hit.collider.gameObject);
         }
-    }
+    }*/
 
     IEnumerator ShootTongue()
     {
-        // Get the mouse position in world space
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Set Z to 0 for 2D space
+        if (!tongue.activeInHierarchy)
+        {
+            // Get the mouse position in world space
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Set Z to 0 for 2D space
 
-        // Calculate the direction from the player to the mouse position
-        Vector2 direction = (mousePosition - transform.position).normalized;
+            // Calculate the direction from the player to the mouse position
+            Vector2 direction = (mousePosition - transform.position).normalized;
 
-        // Perform a raycast to detect hits within the maximum distance
-        float maxDistance = 5f; // Maximum tongue reach
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance);
+            // Perform a raycast to detect hits within the maximum distance
+            float maxDistance = 5f; // Maximum tongue reach
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance);
 
-        // Determine the actual distance to stretch the tongue
-        float distance = hit.collider != null ? hit.distance : maxDistance;
+            // Determine the actual distance to stretch the tongue
+            float distance = hit.collider != null ? hit.distance : maxDistance;
 
-        // Point the tongue toward the target
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        tongue.transform.rotation = Quaternion.Euler(0, 0, angle);
+            // Point the tongue toward the target
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            tongue.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Stretch the tongue
-        tongue.transform.localScale = new Vector3(distance, tongue.transform.localScale.y, tongue.transform.localScale.z);
+            // Stretch the tongue
+            //tongue.transform.localScale = new Vector3(distance, tongue.transform.localScale.y, tongue.transform.localScale.z);
 
-        // Make the tongue visible
-        tongue.SetActive(true);
+            // Make the tongue visible
+            tongue.SetActive(true);
 
-        // Wait for a short duration to simulate the tongue reaching out
-        yield return new WaitForSeconds(0.2f);
+            // Play sound
+            AudioManager.Play(false, 6, 2);
 
-        // Reset the tongue
-        tongue.SetActive(false);
-        tongue.transform.localScale = new Vector3(1, tongue.transform.localScale.y, tongue.transform.localScale.z);
+            // Wait for a short duration to simulate the tongue reaching out
+            yield return new WaitForSeconds(0.2f);
+
+            // Reset the tongue
+            tongue.SetActive(false);
+            tongue.transform.localScale = new Vector3(1, tongue.transform.localScale.y, tongue.transform.localScale.z);
+        }
     }
 }

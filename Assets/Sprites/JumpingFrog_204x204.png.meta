@@ -1,24 +1,21 @@
 fileFormatVersion: 2
-guid: 2bebbabff69992e72b177a72ea25f1bf
+guid: 29c419034bb0b4ae78c4ea22f0010ceb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8483374505251804938
-    second: JumpingFrog_0
+      213: -5433917240353214804
+    second: JumpingFrog_204x204_0
   - first:
-      213: -1523382506327507359
-    second: JumpingFrog_1
+      213: 3012178229302073038
+    second: JumpingFrog_204x204_1
   - first:
-      213: 4708776401101886336
-    second: JumpingFrog_2
-  - first:
-      213: -1548151538380345360
-    second: JumpingFrog_3
+      213: 538922335614978134
+    second: JumpingFrog_204x204_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -55,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JumpingFrog_0
+      name: JumpingFrog_204x204_0
       rect:
         serializedVersion: 2
-        x: 486
-        y: 1936
-        width: 104
-        height: 58
+        x: 8
+        y: 3
+        width: 185
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a07932a6a200bb570800000000000000
-      internalID: 8483374505251804938
+      spriteID: cae20ed5f09d694b0800000000000000
+      internalID: -5433917240353214804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JumpingFrog_1
+      name: JumpingFrog_204x204_1
       rect:
         serializedVersion: 2
-        x: 756
-        y: 1863
-        width: 82
-        height: 99
+        x: 30
+        y: 195
+        width: 11
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16efd458eabdbdae0800000000000000
-      internalID: -1523382506327507359
+      spriteID: ec617bde3286dc920800000000000000
+      internalID: 3012178229302073038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JumpingFrog_2
+      name: JumpingFrog_204x204_2
       rect:
         serializedVersion: 2
-        x: 83
-        y: 31
-        width: 1853
-        height: 1866
+        x: 72
+        y: 193
+        width: 11
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,30 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0839b6a403fe85140800000000000000
-      internalID: 4708776401101886336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JumpingFrog_3
-      rect:
-        serializedVersion: 2
-        x: 449
-        y: 1894
-        width: 19
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0ff6d58d06cd38ae0800000000000000
-      internalID: -1548151538380345360
+      spriteID: 658cad74203aa7700800000000000000
+      internalID: 538922335614978134
       vertices: []
       indices: 
       edges: []
@@ -213,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      JumpingFrog_0: 8483374505251804938
-      JumpingFrog_1: -1523382506327507359
-      JumpingFrog_2: 4708776401101886336
-      JumpingFrog_3: -1548151538380345360
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

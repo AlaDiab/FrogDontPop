@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: f0e5924017641fe23a7ab6db5417fef4
+guid: 59f2895cae094a7609ffa94a83c82539
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6485816208535982237
-    second: Tongue_204x204_0
+      213: -2209162479419304501
+    second: JumpingFrogOpenMouth_204x204_0
+  - first:
+      213: -4402642472762361335
+    second: JumpingFrogOpenMouth_204x204_1
+  - first:
+      213: 854100293782031640
+    second: JumpingFrogOpenMouth_204x204_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +119,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tongue_204x204_0
+      name: JumpingFrogOpenMouth_204x204_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 43
-        width: 182
-        height: 120
-      alignment: 9
-      pivot: {x: 0.96300274, y: 0.09218133}
+        x: 8
+        y: 3
+        width: 185
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9012447a7f320a50800000000000000
-      internalID: 6485816208535982237
+      spriteID: bc5571bfd6a7751e0800000000000000
+      internalID: -2209162479419304501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpingFrogOpenMouth_204x204_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 195
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90ab3f94ffba6e2c0800000000000000
+      internalID: -4402642472762361335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpingFrogOpenMouth_204x204_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 193
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d4f6521bf5adb00800000000000000
+      internalID: 854100293782031640
       vertices: []
       indices: 
       edges: []
@@ -138,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: af286c2bf2b47b53f853ae8f047e2d86
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Tongue_204x204_0: 6485816208535982237
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

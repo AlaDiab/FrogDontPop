@@ -56,7 +56,8 @@ public static class AudioManager
     public static void Play(bool loop, int soundIndex, int channel)
     {
         // Ensure the GameManager is available
-        if (GameManager.Instance == null)
+        GameManager gameManager = UnityEngine.Object.FindObjectOfType<GameManager>();
+        if (gameManager == null)
         {
             Debug.LogError("GameManager instance is not available.");
             return;
@@ -70,7 +71,7 @@ public static class AudioManager
                 audioSource = UnityEngine.Object.FindObjectOfType<Camera>().GetComponent<AudioSource>();
                 break;
             case 1:
-                audioSource = GameManager.Instance.GetComponent<AudioSource>();
+                audioSource = gameManager.GetComponent<AudioSource>();
                 break;
             case 2:
                 audioSource = UnityEngine.Object.FindObjectOfType<Player>().GetComponent<AudioSource>();
@@ -84,13 +85,13 @@ public static class AudioManager
         }
 
         // Load the sound from GameManager
-        if (soundIndex < 0 || soundIndex >= GameManager.Instance.sounds.Length)
+        if (soundIndex < 0 || soundIndex >= gameManager.sounds.Length)
         {
             Debug.LogError($"Sound index {soundIndex} is out of range.");
             return;
         }
 
-        AudioClip sound = GameManager.Instance.sounds[soundIndex];
+        AudioClip sound = gameManager.sounds[soundIndex];
         if (sound == null)
         {
             Debug.LogError($"AudioClip at index {soundIndex} is null.");
