@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     public Sprite[] sprites;
     public int fliesEaten;
+    public GameObject tongue;
 
     // Ground check variables
     public LayerMask groundLayer; // Layer to identify the ground
@@ -69,10 +72,11 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
             HandleMouseClickRaycast();
+            StartCoroutine(ShootTongue());
         }
     
         // Edit size of frog based on the flies eaten
-        float newSize = 0.5f + (fliesEaten * 0.05f);
+        float newSize = 0.5f + (fliesEaten * 0.005f);
         transform.localScale = new Vector3(newSize, newSize, newSize);
     }
     
@@ -116,19 +120,52 @@ public class Player : MonoBehaviour
         Vector2 rayDirection = (mousePosition - transform.position).normalized;
 
         // Cast a ray in the direction of the mouse position
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection);
+        float maxDistance = 2.5f; // Example max distance
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, maxDistance);
 
         // Draw a debug line from the player to the mouse position
-        Debug.DrawLine(transform.position, mousePosition, Color.green, 2f); // Line lasts for 2 seconds
+        Debug.DrawLine(transform.position, mousePosition, Color.green, 1f); // Line lasts for 2 seconds
 
         // Log what the ray hit (if anything)
-        if (hit.collider != null)
+        if (hit.collider != null)// && hit.collider.tag != "Player")
         {
-            Debug.Log($"Ray hit: {hit.collider.name}");
+            Debug.Log($"Ray hit: {hit.collider.tag}");
+            //fliesEaten++;
+            //Destroy(hit.collider.gameObject);
         }
-        else
-        {
-            Debug.Log("Ray hit nothing.");
-        }
+    }
+
+    IEnumerator ShootTongue()
+    {
+        // Get the mouse position in world space
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Set Z to 0 for 2D space
+
+        // Calculate the direction from the player to the mouse position
+        Vector2 direction = (mousePosition - transform.position).normalized;
+
+        // Perform a raycast to detect hits within the maximum distance
+        float maxDistance = 5f; // Maximum tongue reach
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistance);
+
+        // Determine the actual distance to stretch the tongue
+        float distance = hit.collider != null ? hit.distance : maxDistance;
+
+        // Point the tongue toward the target
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        tongue.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // Stretch the tongue
+        tongue.transform.localScale = new Vector3(distance, tongue.transform.localScale.y, tongue.transform.localScale.z);
+
+        // Make the tongue visible
+        tongue.SetActive(true);
+
+        // Wait for a short duration to simulate the tongue reaching out
+        yield return new WaitForSeconds(0.2f);
+
+        // Reset the tongue
+        tongue.SetActive(false);
+        tongue.transform.localScale = new Vector3(1, tongue.transform.localScale.y, tongue.transform.localScale.z);
     }
 }

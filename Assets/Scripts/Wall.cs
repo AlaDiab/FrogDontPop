@@ -24,7 +24,7 @@ public class Wall : MonoBehaviour
         // Repopulate heights
         if (heights.Count == 0)
         {
-            for (int i = -2; i < 6; i++)
+            for (int i = -1; i < 12; i++)
             {
                 heights.Add(i);
             }

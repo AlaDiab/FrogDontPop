@@ -26,7 +26,7 @@ public class Bubble : MonoBehaviour
         cc.isTrigger = player.transform.position.y + player.jumpOffset < transform.position.y;
 
         // Bubbles sink when the player is on them
-        transform.position += (sinking) ? new Vector3(0, -0.01f, 0) : Vector3.zero;
+        transform.position += (sinking) ? new Vector3(0, player.fliesEaten * -0.0001f, 0) : Vector3.zero;
 
         // Move in the direction
         transform.position += new Vector3(direction * movementSpeed * Time.deltaTime, 0.0f, 0.0f);
@@ -38,21 +38,21 @@ public class Bubble : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collide");
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("collide player");
             sinking = true;
+            collision.transform.SetParent(transform);
         }
     }
 
-    void OnCollisionExit(Collision other)
+    void OnCollisionExit2D(Collision2D collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             sinking = false;
+            collision.transform.SetParent(null);
         }
     }
 }
