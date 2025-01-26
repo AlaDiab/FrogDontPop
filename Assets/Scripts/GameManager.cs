@@ -46,8 +46,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        AudioManager.Play(true, "background");
-        AudioManager.Play(true, "FrogDontPop");
+        AudioManager.Play(true, 0, 0);
+        AudioManager.Play(true, 7, 1);
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         // Create first sky piece
         if (lastSkyPiece == null)
         {
-            GameObject newSkyPiece = Instantiate(skyPrefab, new Vector3(0, 9.44f, 0), Quaternion.identity);
+            GameObject newSkyPiece = Instantiate(skyPrefab, new Vector3(0, 9.44f, 1), Quaternion.identity);
             newSkyPiece.transform.parent = backgroundParent;
             lastSkyPiece = newSkyPiece.transform;
         }
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         if (player.transform.position.y >= lastSkyPiece.position.y - 1)
         {
             // Instantiate a new sky prefab
-            GameObject newSkyPiece = Instantiate(skyPrefab, new Vector3(0, lastSkyPiece.position.y + 10.8f, 0), Quaternion.identity);
+            GameObject newSkyPiece = Instantiate(skyPrefab, new Vector3(0, lastSkyPiece.position.y + 10.8f, 1), Quaternion.identity);
             newSkyPiece.transform.parent = backgroundParent;
             lastSkyPiece = newSkyPiece.transform;
         }

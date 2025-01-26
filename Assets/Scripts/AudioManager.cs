@@ -53,7 +53,7 @@ public static class AudioManager
         audioSource.Play();
     }
 
-    public static void Play(bool loop, int soundIndex)
+    public static void Play(bool loop, int soundIndex, int channel)
     {
         // Ensure the GameManager is available
         if (GameManager.Instance == null)
@@ -63,7 +63,20 @@ public static class AudioManager
         }
 
         // Find audio source
-        AudioSource audioSource = Object.FindObjectOfType<AudioSource>();
+        AudioSource audioSource = null;
+        switch (channel)
+        {
+            case 0:
+                audioSource = UnityEngine.Object.FindObjectOfType<Camera>().GetComponent<AudioSource>();
+                break;
+            case 1:
+                audioSource = GameManager.Instance.GetComponent<AudioSource>();
+                break;
+            case 2:
+                audioSource = UnityEngine.Object.FindObjectOfType<Player>().GetComponent<AudioSource>();
+                break;
+        }
+
         if (audioSource == null)
         {
             Debug.LogError("No AudioSource found in the scene.");

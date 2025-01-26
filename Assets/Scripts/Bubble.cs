@@ -53,7 +53,7 @@ public class Bubble : MonoBehaviour
             gameManager.bubbles.Remove(this);
             if (sr.color.a <= 0)
             {
-                AudioManager.Play(false, "bubble-pops");
+                AudioManager.Play(false, 2, 2);
             }
             
             Destroy(gameObject);

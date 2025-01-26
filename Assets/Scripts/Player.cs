@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             
-            AudioManager.Play(false, "frog-jump");
+            AudioManager.Play(false, 4, 2);
     
             // Movement in midair
             if (!canMoveInAir)

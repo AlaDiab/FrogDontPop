@@ -19,7 +19,7 @@ public class Fly : MonoBehaviour
         // Choose an initial random direction
         movementDirection = GetRandomDirection();
 
-        AudioManager.Play(false, "fly-spawn");
+        AudioManager.Play(false, 3, 2);
     }
 
     void Update()
