@@ -4,14 +4,14 @@ public class Bubble : MonoBehaviour
 {
     private float originalHeight;
     private Player player;
-    private CapsuleCollider2D cc;
+    private BoxCollider2D cc;
     private bool sinking;
     
     void Start()
     {
         // Get references
         player = FindObjectOfType<Player>();
-        cc = GetComponent<CapsuleCollider2D>();
+        cc = GetComponent<BoxCollider2D>();
         originalHeight = transform.position.y;
     }
 

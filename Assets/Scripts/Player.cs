@@ -32,40 +32,66 @@ public class Player : MonoBehaviour
     {
         // Check if player is on the ground
         onGround = IsGrounded();
-
+    
         // Jump
         if (onGround && ControlsManager.Stick(0).y > 0 && rb.velocity.y == 0)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-
+    
             // Movement in midair
             if (!canMoveInAir)
             {
                 float horizontalInput = ControlsManager.Stick(0).x;
-                rb.velocity = new Vector2(horizontalInput * movementSpeed, rb.velocity.y);
+                if (!IsCollidingHorizontally(horizontalInput))
+                {
+                    rb.velocity = new Vector2(horizontalInput * movementSpeed, rb.velocity.y);
+                }
             }
         }
-
+    
         // Change sprites
         sr.sprite = (onGround) ? sprites[0] : sprites[1];
         if (!onGround)
         {
             sr.flipX = (ControlsManager.Stick(0).x == 0 && !onGround) ? sr.flipX : (ControlsManager.Stick(0).x > 0);
         }
-
+    
         if (canMoveInAir && !onGround)
         {
             float horizontalInput = ControlsManager.Stick(0).x;
-            rb.velocity = new Vector2(horizontalInput * movementSpeed, rb.velocity.y);
+            if (!IsCollidingHorizontally(horizontalInput))
+            {
+                rb.velocity = new Vector2(horizontalInput * movementSpeed, rb.velocity.y);
+            }
         }
-
+    
         // Handle mouse click raycast
         if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
             HandleMouseClickRaycast();
         }
-
+    
         // Edit size of frog based on the flies eaten
+        float newSize = 0.5f + (fliesEaten * 0.05f);
+        transform.localScale = new Vector3(newSize, newSize, newSize);
+    }
+    
+    bool IsCollidingHorizontally(float horizontalInput)
+    {
+        if (horizontalInput == 0) return false; // No input, no collision
+    
+        // Determine the direction of movement
+        Vector2 direction = horizontalInput > 0 ? Vector2.right : Vector2.left;
+    
+        // Perform a raycast to detect collisions
+        float rayDistance = capsuleCollider.bounds.extents.x + 0.1f; // A small buffer to check slightly ahead
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, rayDistance, groundLayer);
+    
+        // Debug line for visualization
+        Debug.DrawRay(transform.position, direction * rayDistance, Color.blue);
+    
+        // Return true if there's an obstacle in the direction of movement
+        return hit.collider != null;
     }
 
     bool IsGrounded()
