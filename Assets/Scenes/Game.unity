@@ -397,6 +397,13 @@ MonoBehaviour:
   heightDisplay: {fileID: 2077059504}
   fliesEatenDisplay: {fileID: 2045883103}
   gameOverScreen: {fileID: 1402176446}
+  sounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &404698225
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2221,8 +2228,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  camera: {fileID: 519420031}
+  tongue: {fileID: 2040128989}
   movementSpeed: 5
   jumpForce: 10
+  onGround: 0
   canMoveInAir: 1
   jumpOffset: -0.5
   sprites:
@@ -2230,9 +2240,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2bebbabff69992e72b177a72ea25f1bf, type: 3}
   - {fileID: -6100004826022851084, guid: fb77b7cb0b3a92f13b21bd5181a10bfa, type: 3}
   fliesEaten: 25
-  tongue: {fileID: 2040128989}
   heighestHeight: 0
-  camera: {fileID: 519420031}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

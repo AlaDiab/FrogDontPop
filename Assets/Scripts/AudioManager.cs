@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public static class AudioManager
 {
@@ -46,6 +48,43 @@ public static class AudioManager
         }
 
         // Set volume and play the audio clip
+        audioSource.loop = loop;
+        audioSource.clip = sound;
+        audioSource.Play();
+    }
+
+    public static void Play(bool loop, int soundIndex)
+    {
+        // Ensure the GameManager is available
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager instance is not available.");
+            return;
+        }
+
+        // Find audio source
+        AudioSource audioSource = Object.FindObjectOfType<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("No AudioSource found in the scene.");
+            return;
+        }
+
+        // Load the sound from GameManager
+        if (soundIndex < 0 || soundIndex >= GameManager.Instance.sounds.Length)
+        {
+            Debug.LogError($"Sound index {soundIndex} is out of range.");
+            return;
+        }
+
+        AudioClip sound = GameManager.Instance.sounds[soundIndex];
+        if (sound == null)
+        {
+            Debug.LogError($"AudioClip at index {soundIndex} is null.");
+            return;
+        }
+
+        // Play the sound
         audioSource.loop = loop;
         audioSource.clip = sound;
         audioSource.Play();

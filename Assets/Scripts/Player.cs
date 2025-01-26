@@ -9,19 +9,20 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;
     private GameManager gameManager;
+    public Camera camera;
+    public GameObject tongue;
+    private SpriteRenderer sr;
 
     // Player variables
     public float movementSpeed;
     public float jumpForce;
-    private bool onGround;
+    [HideInInspector]
+    public bool onGround;
     public bool canMoveInAir;
     public float jumpOffset;
-    private SpriteRenderer sr;
     public Sprite[] sprites;
     public int fliesEaten;
-    public GameObject tongue;
     public float heighestHeight;
-    public Camera camera;
 
     // Ground check variables
     public LayerMask groundLayer; // Layer to identify the ground
