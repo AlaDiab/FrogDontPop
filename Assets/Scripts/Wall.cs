@@ -37,11 +37,11 @@ public class Wall : MonoBehaviour
 
             // Find the height of the bubble
             int heightSelection = 1;
-            while (gameManager.bubbles.FirstOrDefault(b => b.transform.position.y == (int)player.transform.position.y + heightSelection) != null)
+            while (gameManager.bubbles.FirstOrDefault(b => b.transform.position.y == (int)player.transform.position.y + 1 + heightSelection) != null)
             {
                 heightSelection += gameManager.bubbleSpacing;
             }
-            bubble.transform.position = new Vector3(transform.position.x, (int)player.transform.position.y + heightSelection, 0);//new Vector3(transform.position.x, (int)player.transform.position.y + gameManager.heights[heightSelection], 0);
+            bubble.transform.position = new Vector3(transform.position.x, (int)player.transform.position.y + 1 + heightSelection, 0);//new Vector3(transform.position.x, (int)player.transform.position.y + gameManager.heights[heightSelection], 0);
 
             bubble.direction = (transform.position.x < 0) ? 1 : -1;
         }

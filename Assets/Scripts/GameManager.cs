@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Transform backgroundParent;
     public int bubbleSpacing;
     public bool gameStarted;
+    public GameObject flyPrefab;
 
     // User interface
     public GameObject startButton;
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Play(true, 0, 0);
         AudioManager.Play(true, 7, 1);
+
+        // Start creating flies
+        StartCoroutine(CreateFly());
     }
 
     void Update()
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Update scores
-        heightDisplay.text = $"Height: {Mathf.Round(player.heighestHeight * 10f) / 10f} meters";
+        heightDisplay.text = $"Height: {Mathf.Round(player.heighestHeight * 10f) / 10f} metres";
         fliesEatenDisplay.text = $"Flies Eaten: {player.fliesEaten}";
     }
 
@@ -73,5 +77,18 @@ public class GameManager : MonoBehaviour
         // Reload the current active scene
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+
+    IEnumerator CreateFly()
+    {
+        yield return new WaitForSeconds(2.0f);
+        int fliesAmount = 1 + (int)(player.heighestHeight/20);
+        Debug.Log(fliesAmount);
+
+        for (int i = 0; i < fliesAmount; i++)
+        {
+            Instantiate(flyPrefab, new Vector3(UnityEngine.Random.Range(-9, 10), player.transform.position.y + 5, 0), Quaternion.identity);
+        }
+        StartCoroutine(CreateFly());
     }
 }

@@ -22,7 +22,7 @@ public class Bubble : MonoBehaviour
         originalHeight = transform.position.y;
 
         // Generate speed
-        movementSpeed = UnityEngine.Random.Range(0.5f, 1.2f);
+        movementSpeed = UnityEngine.Random.Range(0.5f, 1.5f);
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class Bubble : MonoBehaviour
         // Bubbles sink when the player is on them
         if (sinking && player.onGround)
         {
-            transform.position += (sinking) ? new Vector3(0, player.fliesEaten * -0.0001f, 0) : Vector3.zero;
-            Color newColor = sr.color + new Color(0, 0, 0, player.fliesEaten * -0.0001f);
+            transform.position += (sinking) ? new Vector3(0, player.fliesEaten * -0.0005f, 0) : Vector3.zero;
+            Color newColor = sr.color + new Color(0, 0, 0, player.fliesEaten * -0.0005f);
             newColor.a = Mathf.Clamp01(newColor.a); // Ensures alpha stays between 0 and 1
             sr.color = newColor;
         }

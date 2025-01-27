@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     // Player variables
     public float movementSpeed;
     public float jumpForce;
-    [HideInInspector]
     public bool onGround;
     public bool canMoveInAir;
     public float jumpOffset;
@@ -44,7 +43,7 @@ public class Player : MonoBehaviour
         }
 
         // Edit jump height
-        jumpForce = 10 + (fliesEaten / 20);
+        jumpForce = 10.5f + (fliesEaten / 10);
 
         // Check if player is on the ground
         onGround = IsGrounded();
@@ -100,11 +99,11 @@ public class Player : MonoBehaviour
         }
     
         // Edit size of frog based on the flies eaten
-        float newSize = 0.5f + (fliesEaten * 0.005f);
+        float newSize = 0.5f + (fliesEaten * 0.05f);
         transform.localScale = new Vector3(newSize, newSize, newSize);
 
         // End the game if you fall too far down
-        if (transform.position.y <= camera.transform.position.y - 6)
+        if (transform.position.y <= camera.transform.position.y - 5.5f)
         {
             gameManager.gameStarted = false;
             gameManager.gameOverScreen.SetActive(true);
@@ -210,7 +209,7 @@ public class Player : MonoBehaviour
             AudioManager.Play(false, 6, 2);
 
             // Wait for a short duration to simulate the tongue reaching out
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
 
             // Reset the tongue
             tongue.SetActive(false);
